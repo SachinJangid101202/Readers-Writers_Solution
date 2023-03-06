@@ -1,0 +1,48 @@
+
+int currentlyReading=0;
+int WaitingWriters=0;
+bool readersTurn=false;
+bool writing=false;
+
+
+class readers{
+
+ void doReading{
+    while((writing||WaitingWriters>0) and !readersTurn)
+       {
+         // do nothing;
+      }
+    currentlyReading++;
+    readersTurn=true;
+   }
+  void freeReaders{
+    currentlyReading--;
+    readersTurn=false;
+   }
+};
+
+
+
+
+class writers{
+
+  void doWriting{
+     while(currentlyReading>0 or writing)
+     {WaitingWriters++;
+      while(currentlyReading>0 or writing)
+        {//do nothing;
+        }
+     }
+     WaitingWriters--;
+     writing=true;
+     
+   }
+  
+
+  void freeWriters{
+      readersturn=true;
+      writing=false;
+      
+  } 
+
+}                                                                                                                   
